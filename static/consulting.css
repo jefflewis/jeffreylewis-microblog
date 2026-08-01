@@ -798,6 +798,39 @@ h3 {
   }
 }
 
+/* Isolate the landing page from legacy site-wide custom.css rules. */
+body.landing-page {
+  background: var(--base);
+  color: var(--text);
+}
+
+.landing-page h1,
+.landing-page h2,
+.landing-page h3,
+.landing-page h4,
+.landing-page h5,
+.landing-page h6 {
+  color: var(--text);
+}
+
+.landing-page a {
+  color: inherit;
+}
+
+.landing-page .site-header {
+  border-bottom: 1px solid rgb(69 71 90 / 70%);
+  background: rgb(30 30 46 / 88%);
+}
+
+.landing-page .site-footer {
+  border-top: 1px solid var(--surface-0);
+  background: var(--mantle);
+}
+
+.landing-page .button-primary {
+  color: var(--crust);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
