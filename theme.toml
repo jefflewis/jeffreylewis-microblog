@@ -1,0 +1,9 @@
+name = "Jeff Lewis Consulting Landing Page"
+license = "All rights reserved"
+description = "Consulting-focused Micro.blog homepage for jeffreylewis.me"
+homepage = "https://jeffreylewis.me"
+min_version = "0.91.2"
+
+[author]
+  name = "Jeff Lewis"
+  homepage = "https://jeffreylewis.me"
