@@ -705,6 +705,12 @@ body.site-page {
   letter-spacing: -0.025em;
 }
 
+.prose h2 > a,
+.prose h3 > a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .prose h4 {
   margin: 1.8rem 0 0.7rem;
   color: var(--sapphire);
