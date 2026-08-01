@@ -352,6 +352,11 @@ body.landing-page {
   color: var(--sapphire);
 }
 
+/* Hide the retired summary strip if an older cached template references it. */
+.facts {
+  display: none !important;
+}
+
 
 .section {
   padding-block: clamp(72px, 9vw, 108px);
