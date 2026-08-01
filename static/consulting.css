@@ -163,8 +163,16 @@ body.landing-page {
   gap: clamp(18px, 3vw, 32px);
 }
 
-.site-header nav a,
-.site-footer nav a {
+.site-header nav a {
+  color: var(--subtext-0);
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.site-footer .footer-grid nav a,
+.site-footer .footer-grid nav a:visited {
   color: var(--subtext-0);
   font-size: 0.9rem;
   font-weight: 650;
@@ -173,7 +181,8 @@ body.landing-page {
 }
 
 .site-header nav a:hover,
-.site-footer nav a:hover {
+.site-footer .footer-grid nav a:hover,
+.site-footer .footer-grid nav a:focus-visible {
   color: var(--sapphire);
 }
 
