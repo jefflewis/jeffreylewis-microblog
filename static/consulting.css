@@ -113,6 +113,7 @@ body.landing-page {
 .brand,
 .site-header nav,
 .hero-actions,
+.profile-links,
 .text-links,
 .footer-grid,
 .site-footer nav,
@@ -210,6 +211,23 @@ body.landing-page {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 30px;
+}
+
+.profile-links {
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.profile-links a {
+  color: var(--subtext-0);
+  font-size: 0.78rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.profile-links a:hover {
+  color: var(--sapphire);
 }
 
 .button {

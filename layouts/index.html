@@ -46,6 +46,12 @@
           <a class="button button-primary" href="/resume/">View résumé <span aria-hidden="true">→</span></a>
           <a class="button button-secondary" href="/archive/">Read the blog</a>
         </div>
+        <nav class="profile-links" aria-label="Professional profiles">
+          {{ with .Site.Params.gateway_github_username }}<a href="https://github.com/{{ . }}">GitHub <span aria-hidden="true">↗</span></a>{{ end }}
+          {{ with .Site.Params.gateway_linkedin_username }}<a href="https://www.linkedin.com/in/{{ . }}">LinkedIn <span aria-hidden="true">↗</span></a>{{ end }}
+          {{ with .Site.Params.gateway_bluesky_username }}<a href="https://bsky.app/profile/{{ . }}">Bluesky <span aria-hidden="true">↗</span></a>{{ end }}
+          {{ if .Site.Params.gateway_mastodon_url }}<a href="{{ .Site.Params.gateway_mastodon_url }}" rel="me">Mastodon <span aria-hidden="true">↗</span></a>{{ end }}
+        </nav>
       </div>
 
       <div class="hero-console" aria-label="Engineering focus">
@@ -127,10 +133,12 @@
       <p>© {{ now.Format "2006" }} Jeff Lewis</p>
       <nav aria-label="Site and social links">
         <a href="/archive/">Blog</a>
-        <a href="https://micro.blog/jefflewis">Micro.blog</a>
-        <a href="https://bsky.app/profile/jefflewis.social">Bluesky</a>
-        <a href="https://hachyderm.io/@jefflewis" rel="me">Mastodon</a>
-        <a href="mailto:mail@jeffreylewis.me">Email</a>
+        {{ with .Site.Author.username }}<a href="https://micro.blog/{{ . }}">Micro.blog</a>{{ end }}
+        {{ with .Site.Params.gateway_github_username }}<a href="https://github.com/{{ . }}">GitHub</a>{{ end }}
+        {{ with .Site.Params.gateway_linkedin_username }}<a href="https://www.linkedin.com/in/{{ . }}">LinkedIn</a>{{ end }}
+        {{ with .Site.Params.gateway_bluesky_username }}<a href="https://bsky.app/profile/{{ . }}">Bluesky</a>{{ end }}
+        {{ if .Site.Params.gateway_mastodon_url }}<a href="{{ .Site.Params.gateway_mastodon_url }}" rel="me">Mastodon</a>{{ end }}
+        {{ with .Site.Params.gateway_email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
       </nav>
     </div>
   </footer>
