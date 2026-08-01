@@ -16,6 +16,13 @@
     <meta property="og:description" content="Native mobile engineering, application architecture, and reliable local-first systems.">
     <meta name="twitter:title" content="Jeff Lewis — Principal Engineer">
     <meta name="twitter:description" content="Native mobile engineering, application architecture, and reliable local-first systems.">
+  {{ else if and (eq $page.Type "post") (not $page.Title) }}
+    <title>{{ $page.Date.Format "January 2, 2006" }} — Jeff Lewis</title>
+    <meta name="description" content="{{ $page.Summary | plainify | htmlUnescape | truncate 160 }}">
+    <meta property="og:title" content="{{ $page.Date.Format "January 2, 2006" }} — Jeff Lewis">
+    <meta property="og:description" content="{{ $page.Summary | plainify | htmlUnescape | truncate 160 }}">
+    <meta name="twitter:title" content="{{ $page.Date.Format "January 2, 2006" }} — Jeff Lewis">
+    <meta name="twitter:description" content="{{ $page.Summary | plainify | htmlUnescape | truncate 160 }}">
   {{ else }}
     <title>{{ $page.Title }} — Jeff Lewis</title>
     <meta name="description" content="{{ $page.Summary | plainify | htmlUnescape | truncate 160 }}">
