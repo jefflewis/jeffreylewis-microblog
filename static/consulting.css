@@ -1,18 +1,36 @@
-/* Jeff Lewis homepage — Catppuccin Mocha */
+/* Jeff Lewis homepage — adaptive Catppuccin Latte and Mocha */
 :root {
-  color-scheme: dark;
-  --base: #1e1e2e;
-  --mantle: #181825;
-  --crust: #11111b;
-  --surface-0: #313244;
-  --surface-1: #45475a;
-  --overlay-0: #6c7086;
-  --subtext-0: #a6adc8;
-  --text: #cdd6f4;
-  --lavender: #b4befe;
-  --sapphire: #74c7ec;
+  color-scheme: light;
+  --base: #eff1f5;
+  --mantle: #e6e9ef;
+  --crust: #dce0e8;
+  --surface-0: #ccd0da;
+  --surface-1: #bcc0cc;
+  --overlay-0: #9ca0b0;
+  --subtext-0: #6c6f85;
+  --text: #4c4f69;
+  --lavender: #7287fd;
+  --sapphire: #209fb5;
+  --on-accent: #11111b;
   --shell: 1080px;
   --radius: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --base: #1e1e2e;
+    --mantle: #181825;
+    --crust: #11111b;
+    --surface-0: #313244;
+    --surface-1: #45475a;
+    --overlay-0: #6c7086;
+    --subtext-0: #a6adc8;
+    --text: #cdd6f4;
+    --lavender: #b4befe;
+    --sapphire: #74c7ec;
+    --on-accent: #11111b;
+  }
 }
 
 * {
@@ -73,7 +91,7 @@ body.landing-page {
 
 .landing-page ::selection {
   background: var(--lavender);
-  color: var(--crust);
+  color: var(--on-accent);
 }
 
 .shell {
@@ -89,7 +107,7 @@ body.landing-page {
   padding: 10px 14px;
   border-radius: 8px;
   background: var(--sapphire);
-  color: var(--crust);
+  color: var(--on-accent);
   font-weight: 750;
   transform: translateY(-160%);
   transition: transform 160ms ease;
@@ -104,8 +122,8 @@ body.landing-page {
   z-index: 20;
   top: 0;
   border: 0;
-  border-bottom: 1px solid rgb(69 71 90 / 65%);
-  background: rgb(30 30 46 / 90%);
+  border-bottom: 1px solid color-mix(in srgb, var(--surface-1) 65%, transparent);
+  background: color-mix(in srgb, var(--base) 90%, transparent);
   backdrop-filter: blur(18px);
 }
 
@@ -190,7 +208,7 @@ body.landing-page {
   height: 8px;
   border-radius: 99px;
   background: var(--sapphire);
-  box-shadow: 0 0 0 5px rgb(116 199 236 / 10%);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--sapphire) 10%, transparent);
 }
 
 .landing-page h1 {
@@ -247,7 +265,7 @@ body.landing-page {
 
 .landing-page .button-primary {
   background: var(--lavender);
-  color: var(--crust);
+  color: var(--on-accent);
 }
 
 .button-primary:hover {
@@ -256,7 +274,7 @@ body.landing-page {
 
 .button-secondary {
   border-color: var(--surface-1);
-  background: rgb(49 50 68 / 40%);
+  background: color-mix(in srgb, var(--surface-0) 40%, transparent);
   color: var(--text);
 }
 
