@@ -1,7 +1,15 @@
+{{ $page := .page }}
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {{ if .IsHome }}
+  {{ if .archive }}
+    <title>Archive — Jeff Lewis</title>
+    <meta name="description" content="Notes from Jeff Lewis on software, tools, and whatever else is worth remembering.">
+    <meta property="og:title" content="Archive — Jeff Lewis">
+    <meta property="og:description" content="Notes from Jeff Lewis on software, tools, and whatever else is worth remembering.">
+    <meta name="twitter:title" content="Archive — Jeff Lewis">
+    <meta name="twitter:description" content="Notes from Jeff Lewis on software, tools, and whatever else is worth remembering.">
+  {{ else if $page.IsHome }}
     <title>Jeff Lewis — Principal Engineer</title>
     <meta name="description" content="Jeff Lewis is a principal engineer working across native iOS, Android, local-first systems, and application architecture.">
     <meta property="og:title" content="Jeff Lewis — Principal Engineer">
@@ -9,16 +17,16 @@
     <meta name="twitter:title" content="Jeff Lewis — Principal Engineer">
     <meta name="twitter:description" content="Native mobile engineering, application architecture, and reliable local-first systems.">
   {{ else }}
-    <title>{{ .Title }} — Jeff Lewis</title>
-    <meta name="description" content="{{ .Summary | plainify | htmlUnescape | truncate 160 }}">
-    <meta property="og:title" content="{{ .Title }} — Jeff Lewis">
-    <meta property="og:description" content="{{ .Summary | plainify | htmlUnescape | truncate 160 }}">
-    <meta name="twitter:title" content="{{ .Title }} — Jeff Lewis">
-    <meta name="twitter:description" content="{{ .Summary | plainify | htmlUnescape | truncate 160 }}">
+    <title>{{ $page.Title }} — Jeff Lewis</title>
+    <meta name="description" content="{{ $page.Summary | plainify | htmlUnescape | truncate 160 }}">
+    <meta property="og:title" content="{{ $page.Title }} — Jeff Lewis">
+    <meta property="og:description" content="{{ $page.Summary | plainify | htmlUnescape | truncate 160 }}">
+    <meta name="twitter:title" content="{{ $page.Title }} — Jeff Lewis">
+    <meta name="twitter:description" content="{{ $page.Summary | plainify | htmlUnescape | truncate 160 }}">
   {{ end }}
-  <link rel="canonical" href="{{ .Permalink }}">
-  <meta property="og:type" content="{{ if eq .Type "post" }}article{{ else }}website{{ end }}">
-  <meta property="og:url" content="{{ .Permalink }}">
+  <link rel="canonical" href="{{ if .archive }}{{ "/archive/" | absURL }}{{ else }}{{ $page.Permalink }}{{ end }}">
+  <meta property="og:type" content="{{ if eq $page.Type "post" }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ if .archive }}{{ "/archive/" | absURL }}{{ else }}{{ $page.Permalink }}{{ end }}">
   <meta property="og:image" content="{{ "jl-mark.svg" | absURL }}">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:image" content="{{ "jl-mark.svg" | absURL }}">
@@ -26,5 +34,5 @@
   <meta name="theme-color" content="#1E1E2E" media="(prefers-color-scheme: dark)">
   <link rel="icon" href="{{ "jl-mark.svg" | relURL }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ "consulting.css" | relURL }}">
-  {{ if templates.Exists "partials/microblog_head.html" }}{{ partial "microblog_head.html" . }}{{ end }}
+  {{ if templates.Exists "partials/microblog_head.html" }}{{ partial "microblog_head.html" $page }}{{ end }}
 </head>
