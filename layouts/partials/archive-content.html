@@ -13,9 +13,9 @@
   {{ end }}
 
   {{ $posts := where .Site.RegularPages.ByDate.Reverse "Type" "post" }}
-  {{ $paginator := .Paginate $posts 20 }}
+  {{ $richPosts := first 20 $posts }}
   <ol class="archive-feed">
-    {{ range $paginator.Pages }}
+    {{ range $richPosts }}
     <li>
       <article class="archive-card h-entry">
         <header class="archive-card-header">
@@ -35,12 +35,22 @@
     {{ end }}
   </ol>
 
-  {{ if gt $paginator.TotalPages 1 }}
-  <nav class="pagination archive-pagination" aria-label="Archive pagination">
-    {{ with $paginator.Prev }}<a href="{{ .URL }}" rel="prev">← Newer posts</a>{{ end }}
-    <span>Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
-    {{ with $paginator.Next }}<a href="{{ .URL }}" rel="next">Older posts →</a>{{ end }}
-  </nav>
+  {{ $olderPosts := after 20 $posts }}
+  {{ if gt (len $olderPosts) 0 }}
+  <details class="archive-older">
+    <summary>Browse {{ len $olderPosts }} older posts</summary>
+    <ol class="archive-list">
+      {{ range $olderPosts }}
+      <li class="h-entry">
+        <a class="u-url" href="{{ .Permalink }}">
+          <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+          <span class="p-summary">{{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | htmlUnescape | truncate 180 }}{{ end }}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </li>
+      {{ end }}
+    </ol>
+  </details>
   {{ end }}
 </section>
 

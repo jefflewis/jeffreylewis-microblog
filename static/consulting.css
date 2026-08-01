@@ -1019,9 +1019,39 @@ body.site-page {
   color: var(--sapphire);
 }
 
-.archive-pagination {
-  padding-top: 28px;
-  border-top: 1px solid var(--surface-0);
+.archive-older {
+  margin-top: 34px;
+  border: 1px solid var(--surface-0);
+  border-radius: 14px;
+  background: var(--mantle);
+}
+
+.archive-older summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 26px;
+  color: var(--text);
+  font-weight: 750;
+  cursor: pointer;
+  list-style: none;
+}
+
+.archive-older summary::-webkit-details-marker {
+  display: none;
+}
+
+.archive-older summary::after {
+  color: var(--lavender);
+  content: "+";
+}
+
+.archive-older[open] summary::after {
+  content: "−";
+}
+
+.archive-older .archive-list {
+  margin: 0 26px 26px;
 }
 
 .pagination {
@@ -1106,7 +1136,12 @@ body.site-page {
     padding: 16px 18px;
   }
 
-  .archive-pagination {
-    flex-wrap: wrap;
+  .archive-older summary {
+    padding: 18px;
   }
+
+  .archive-older .archive-list {
+    margin: 0 18px 18px;
+  }
+
 }
