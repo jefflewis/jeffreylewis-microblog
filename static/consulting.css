@@ -160,12 +160,12 @@ body.landing-page {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.75fr);
-  align-items: center;
-  gap: clamp(46px, 7vw, 84px);
-  min-height: 560px;
-  padding-block: 78px;
+  min-height: 440px;
+  padding-block: 84px;
+}
+
+.hero-copy {
+  max-width: 820px;
 }
 
 .eyebrow,
@@ -265,92 +265,6 @@ body.landing-page {
   color: var(--lavender);
 }
 
-.hero-console {
-  overflow: hidden;
-  border: 1px solid var(--surface-1);
-  border-radius: var(--radius);
-  background: var(--mantle);
-  box-shadow: 0 22px 60px rgb(0 0 0 / 22%);
-  transform: rotate(0.7deg);
-}
-
-.console-bar {
-  position: relative;
-  display: flex;
-  min-height: 45px;
-  align-items: center;
-  gap: 7px;
-  padding: 0 17px;
-  border-bottom: 1px solid var(--surface-0);
-  background: var(--crust);
-}
-
-.console-bar span {
-  width: 8px;
-  height: 8px;
-  border-radius: 99px;
-  background: var(--surface-1);
-}
-
-.console-bar span:first-child {
-  background: var(--lavender);
-}
-
-.console-bar span:nth-child(2) {
-  background: var(--sapphire);
-}
-
-.console-bar code {
-  position: absolute;
-  left: 50%;
-  color: var(--overlay-0);
-  font-size: 0.71rem;
-  transform: translateX(-50%);
-}
-
-.console-body {
-  padding: 34px;
-}
-
-.console-body img {
-  width: 116px;
-  height: 116px;
-  margin: 0 auto 28px;
-  border-radius: 20px;
-  box-shadow: 0 12px 30px rgb(0 0 0 / 25%);
-}
-
-.console-body dl {
-  margin: 0;
-}
-
-.console-body dl div {
-  display: grid;
-  grid-template-columns: 112px 1fr;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--surface-0);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.72rem;
-}
-
-.console-body dl div:last-child {
-  border-bottom: 0;
-}
-
-.console-body dt {
-  color: var(--overlay-0);
-}
-
-.console-body dt::before {
-  content: "$ ";
-  color: var(--lavender);
-}
-
-.console-body dd {
-  margin: 0;
-  color: var(--sapphire);
-}
 
 /* Hide the retired summary strip if an older cached template references it. */
 .facts {
@@ -534,14 +448,9 @@ body.landing-page {
 
 @media (max-width: 900px) {
   .hero {
-    grid-template-columns: 1fr;
     min-height: 0;
   }
 
-  .hero-console {
-    width: min(100%, 520px);
-    transform: none;
-  }
 
 
   .about {
@@ -583,7 +492,6 @@ body.landing-page {
   }
 
   .hero {
-    gap: 42px;
     padding-block: 58px;
   }
 
@@ -592,15 +500,6 @@ body.landing-page {
   }
 
 
-  .console-body {
-    padding: 28px 22px;
-  }
-
-  .console-body dl div {
-    grid-template-columns: 100px 1fr;
-    gap: 8px;
-    font-size: 0.68rem;
-  }
 
   .section {
     padding-block: 68px;
