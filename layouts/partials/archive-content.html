@@ -1,0 +1,27 @@
+<section class="listing h-feed" aria-labelledby="archive-title">
+  <header class="page-heading">
+    <p class="kicker">Blog</p>
+    <h1 id="archive-title">Archive.</h1>
+    <p>Notes on software, tools, and whatever else is worth remembering.</p>
+  </header>
+
+  {{ $categories := ($.Site.GetPage "taxonomyTerm" "categories").Pages }}
+  {{ if gt (len $categories) 0 }}
+  <nav class="category-list" aria-label="Categories">
+    {{ range $categories }}<a href="{{ .Permalink }}">{{ .Title }}</a>{{ end }}
+  </nav>
+  {{ end }}
+
+  {{ $posts := where .Site.Pages.ByDate.Reverse "Type" "post" }}
+  <ol class="archive-list">
+    {{ range $posts }}
+    <li class="h-entry">
+      <a class="u-url" href="{{ .Permalink }}">
+        <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        <span class="p-summary">{{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | htmlUnescape | truncate 180 }}{{ end }}</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </li>
+    {{ end }}
+  </ol>
+</section>

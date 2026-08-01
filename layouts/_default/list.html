@@ -1,0 +1,27 @@
+{{ define "main" }}
+<section class="listing h-feed" aria-labelledby="list-title">
+  <header class="page-heading">
+    <p class="kicker">Blog</p>
+    <h1 id="list-title">{{ if .Title }}{{ .Title }}{{ else }}Posts{{ end }}</h1>
+  </header>
+  {{ $paginator := .Paginate (where .Pages.ByDate.Reverse "Type" "post") (index .Site.Params "archive-paginate" | default 25) }}
+  <ol class="archive-list">
+    {{ range $paginator.Pages }}
+    <li class="h-entry">
+      <a class="u-url" href="{{ .Permalink }}">
+        <time class="dt-published" datetime="{{ .Date.Format "2006-01-02T15:04:05-0700" }}">{{ .Date.Format "Jan 2, 2006" }}</time>
+        <span class="p-summary">{{ if .Title }}{{ .Title }}{{ else }}{{ .Summary | plainify | htmlUnescape | truncate 180 }}{{ end }}</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </li>
+    {{ end }}
+  </ol>
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="pagination" aria-label="Pagination">
+    {{ with $paginator.Prev }}<a href="{{ .URL }}">← Newer</a>{{ end }}
+    <span>Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+    {{ with $paginator.Next }}<a href="{{ .URL }}">Older →</a>{{ end }}
+  </nav>
+  {{ end }}
+</section>
+{{ end }}

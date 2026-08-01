@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+{{ partial "site-head.html" . }}
+<body class="site-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  {{ partial "site-header.html" . }}
+  <main id="main" class="shell content-shell">
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "site-footer.html" . }}
+  {{ if templates.Exists "partials/custom_footer.html" }}{{ partial "custom_footer.html" . }}{{ end }}
+  {{ range .Site.Params.plugins_js }}<script src="{{ . }}"></script>{{ end }}
+</body>
+</html>

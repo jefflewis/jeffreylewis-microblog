@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="shell nav-shell">
+    <a class="brand" href="/" aria-label="Jeff Lewis, home">
+      <img src="{{ "jl-mark.svg" | relURL }}" width="42" height="42" alt="">
+      <span>Jeff Lewis</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      {{ if .IsHome }}<a href="#about">About</a>{{ else }}<a href="/">Home</a>{{ end }}
+      <a href="/archive/">Blog</a>
+      <a href="/resume/">Résumé</a>
+    </nav>
+  </div>
+</header>
